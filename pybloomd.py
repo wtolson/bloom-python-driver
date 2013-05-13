@@ -465,6 +465,10 @@ class BloomdFilter(object):
         if resp != "Done":
             raise BloomdError("Got response: %s" % resp)
 
+    def check(self, key):
+        "Checks if the key is contained in the filter."
+        return key in self
+
     def __contains__(self, key):
         "Checks if the key is contained in the filter."
         with self.pool.get_connection() as conn:
